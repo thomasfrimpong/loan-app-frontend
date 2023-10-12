@@ -36,6 +36,7 @@ export default function CreateCustomer() {
     //   redirect("/?callbackUrl=/customers");
     // },
   });
+  const token = session?.user.api_token;
 
   const {
     handleSubmit,
@@ -55,16 +56,19 @@ export default function CreateCustomer() {
     // Handle form submission
     console.log(data);
 
-    addCustomer({
-      first_name: data.first_name,
-      last_name: data.last_name,
-      phone_number: data.phone_number,
-      address: data.address,
-      email: data.email,
-      marital_status: maritalStatus,
+    addCustomer(
+      {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        phone_number: data.phone_number,
+        address: data.address,
+        email: data.email,
+        marital_status: maritalStatus,
 
-      id_card: data.id_card,
-    });
+        id_card: data.id_card,
+      },
+      token
+    );
   };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -10,19 +10,24 @@ const dataEntry = () => {
   const { setAuthState } = useContext(AuthenticationContext);
   const router = useRouter();
 
-  const { data: session, status } = useSession();
-  const token = session?.user.api_token;
+  // const { data: session, status } = useSession({
 
-  const addCustomer = async ({
-    first_name,
-    last_name,
-    phone_number,
-    address,
-    email,
-    marital_status,
+  // });
+  // const token = session?.user.api_token;
 
-    id_card,
-  }: Customer) => {
+  const addCustomer = async (
+    {
+      first_name,
+      last_name,
+      phone_number,
+      address,
+      email,
+      marital_status,
+
+      id_card,
+    }: Customer,
+    token: any
+  ) => {
     setAuthState({
       success: false,
       loading: true,
